@@ -6,4 +6,12 @@ public abstract class Crew  {
         this.name = name;
         this.rank = rank;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Rank getRank() {
+        return rank;
+    }
 }

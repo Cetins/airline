@@ -35,8 +35,8 @@ public class FlightTest {
         margaret = new CabinCrew("Margaret", Rank.HOSTESS);
         cabinCrew = new ArrayList<>(Arrays.asList(mary, scott, margaret));
         elaina = new Passenger("Elaina", 1);
-        kat = new Passenger("Kat", 2);
-        sandy = new Passenger("Sandy", 2);
+        kat = new Passenger("Kat", 0);
+        sandy = new Passenger("Sandy", 0);
         cetin = new Passenger("Cetin", 1);
         passengers = new ArrayList<>(Arrays.asList(elaina, kat, sandy, cetin));
         plane = new Plane(PlaneType.BOEING747);

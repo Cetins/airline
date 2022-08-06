@@ -4,4 +4,7 @@ public class CabinCrew extends Crew{
         super(name, rank);
     }
 
+    public String relayMessage() {
+        return "Welcome on board";
+    }
 }

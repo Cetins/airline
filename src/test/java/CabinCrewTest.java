@@ -21,4 +21,9 @@ public class CabinCrewTest {
     public void hasRank() {
         assertEquals(Rank.HOSTESS, mary.getRank());
     }
+
+    @Test
+    public void canRelayMessages() {
+        assertEquals("Welcome on board", mary.relayMessage());
+    }
 }

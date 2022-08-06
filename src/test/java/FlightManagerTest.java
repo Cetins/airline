@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -25,7 +27,7 @@ public class FlightManagerTest {
     Plane jet;
 
     @Before
-    public void before() {
+    public void before() throws ParseException {
         flightManager = new FlightManager();
         john = new Pilot("John", Rank.CAPTAIN, "CT278739");
         tracey = new Pilot("Tracey", Rank.SECOND_OFFICER, "SO449826");
@@ -48,7 +50,7 @@ public class FlightManagerTest {
                 "TK4320",
                 "JFK",
                 "LHR",
-                "12:00");
+                LocalDateTime.parse("2022-11-01T11:50:55"));
     }
 
     @Test

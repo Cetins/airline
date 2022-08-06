@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -26,7 +28,7 @@ public class FlightTest {
     Plane jet;
 
     @Before
-    public void before() {
+    public void before() throws ParseException {
         john = new Pilot("John", Rank.CAPTAIN, "CT278739");
         tracey = new Pilot("Tracey", Rank.SECOND_OFFICER, "SO449826");
         pilots = new ArrayList<>(Arrays.asList(john, tracey));
@@ -48,7 +50,7 @@ public class FlightTest {
                 "TK4320",
                 "JFK",
                 "LHR",
-                "12:00");
+                LocalDateTime.parse("2022-11-01T11:50:55"));
         privateFlight = new Flight(
                 pilots,
                 cabinCrew,
@@ -56,7 +58,7 @@ public class FlightTest {
                 "JT2350",
                 "JFK",
                 "LHR",
-                "12:00");
+                LocalDateTime.parse("2022-11-01T11:50:55"));
     }
 
     @Test
@@ -98,7 +100,7 @@ public class FlightTest {
 
     @Test
     public void hasDepartureTime() {
-        assertEquals("12:00", flight.getDepartureTime());
+        assertEquals(LocalDateTime.parse("2022-11-01T11:50:55"), flight.getDepartureTime());
     }
 
     @Test

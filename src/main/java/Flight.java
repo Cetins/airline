@@ -1,3 +1,6 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Flight {
@@ -9,9 +12,9 @@ public class Flight {
     private String flightNo;
     private String destination;
     private String departureAirport;
-    private String departureTime;
+    private LocalDateTime departureTime;
 
-    public Flight(ArrayList<Pilot> pilots, ArrayList<CabinCrew> cabinCrew, Plane plane, String flightNo, String destination, String departureAirport, String departureTime) {
+    public Flight(ArrayList<Pilot> pilots, ArrayList<CabinCrew> cabinCrew, Plane plane, String flightNo, String destination, String departureAirport, LocalDateTime departureTime) {
         this.pilots = pilots;
         this.cabinCrew = cabinCrew;
         this.passengers = new ArrayList<>();
@@ -58,7 +61,7 @@ public class Flight {
         return departureAirport;
     }
 
-    public String getDepartureTime() {
+    public LocalDateTime getDepartureTime() {
         return departureTime;
     }
 

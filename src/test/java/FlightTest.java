@@ -6,8 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class FlightTest {
     Flight flight;
@@ -113,6 +112,7 @@ public class FlightTest {
     public void canBookPassengerIfSeatAvailable() {
         flight.bookPassenger(kat);
         assertEquals(1, flight.getPassengersCount());
+        assertEquals(flight.getFlightNo(), kat.getFlight());
     }
 
     @Test
@@ -121,6 +121,14 @@ public class FlightTest {
         privateFlight.bookPassenger(kat);
         privateFlight.bookPassenger(elaina);
         assertEquals(2, privateFlight.getPassengersCount());
+        assertEquals(privateFlight.getFlightNo(), sandy.getFlight());
+        assertEquals("", elaina.getFlight());
     }
 
+    @Test
+    public void canGenerateUniqueSeatNumbers() {
+        privateFlight.bookPassenger(sandy);
+        privateFlight.bookPassenger(kat);
+        assertTrue(sandy.getSeatNo() != kat.getSeatNo());
+    }
 }

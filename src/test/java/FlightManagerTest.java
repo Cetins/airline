@@ -75,5 +75,4 @@ public class FlightManagerTest {
         flight.bookPassenger(cetin);
         assertEquals(4410, flightManager.calculateTotalBaggageWeightRemains(flight));
     }
-
 }

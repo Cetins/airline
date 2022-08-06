@@ -1,7 +1,6 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+
 
 public class Flight {
 
@@ -23,6 +22,10 @@ public class Flight {
         this.destination = destination;
         this.departureAirport = departureAirport;
         this.departureTime = departureTime;
+    }
+
+    public ArrayList<Passenger> getPassengers() {
+        return passengers;
     }
 
     public int getPilotsCount() {
@@ -71,11 +74,35 @@ public class Flight {
 
     public void bookPassenger(Passenger passenger) {
         if (this.calculateNumOfSeatsAvailable() >= 1) {
+            passenger.setSeatNo(this.generateRandomSeatNumber());
+            passenger.setFlight(flightNo);
             this.passengers.add(passenger);
         }
     }
+    public int generateRandomSeatNumber() {
+        double doubleRandomNumber = Math.random() * this.getPlaneCapacity();
+        int seatNo = (int)doubleRandomNumber;
+        if (this.validateSeatNo(seatNo)) {
+            return seatNo;
+        } else  {
+            return this.generateRandomSeatNumber(); // just for fun :)
+        }
+    }
 
-    public ArrayList<Passenger> getPassengers() {
-        return passengers;
+    public ArrayList getSeatNumbers() {
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        for (Passenger person:
+             this.getPassengers()){
+            numbers.add(person.getSeatNo());
+        }
+        return numbers;
+    }
+
+    public Boolean validateSeatNo(Integer seatNumber) {
+        ArrayList<Integer> numbers = this.getSeatNumbers();
+        if (numbers.contains(seatNumber)) {
+            return false;
+        }
+        return true;
     }
 }
